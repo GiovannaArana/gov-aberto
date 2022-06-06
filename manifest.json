@@ -1,12 +1,15 @@
 {
     "manifest_version": 2,
     "version": "0.0.1",
-    "name": "Hello World",
+    "name": "Catálogo E-SEEK",
     "description": "Extensão Hello World - iMasters",
-    "author": "Diego Martins de Pinho",
+    "author": "Giovanna Arana >:(",
     "browser_action": {
-   	 "default_title": "Hello World",
+   	 "default_title": "Catálogo E-SEEK",
    	 "default_popup": "index.html",
    	 "default_icon": "128.png"
-    }
+    },
+    "permissions": [
+        "tabs"
+    ]
 }
