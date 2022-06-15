@@ -3,27 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Catálogo E-SEEK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="container-wrapper">
     <div class = 'siteGov'>
-        <h1>Você está em: </h1>
+        <h1 class = 'textoBase'>Você está em: </h1>
+        <img class="favicon">        
         <p class="html"></p>
         <div class = 'cadastro'>
             <h1>Não temos esse link ainda :(</h1>
-            <button>Cadastre</button>
+            <button class="botao">Cadastre</button>
         </div>
         <div class = 'pagina'>
-            <button>Vá para o E-SIC</button>
+            <button class="botao" id="botao">Vá para o E-SIC</button>
         </div>
     </div>
     
     <div class = 'naoGov'>
-        <h1>Você não esta no site do gover kkkkkkkkkkkk</h1>
+        <h1>Atualmente, você não se encontra em um site válido.</h1>
+    </div>
     </div>
 
 </body>
 
 <script src = 'script.js'></script>
+<style>
+    @import url("style.css")
+</style>
 
 </html>

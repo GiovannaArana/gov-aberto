@@ -5,24 +5,37 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
     
     if(gov){
         document.querySelector(".html").innerHTML=url_atual;
-        document.querySelector('.naoGov').style.visibility='hidden';
-        document.querySelector('.naoGov').style.height='0px';
+        document.querySelector('.naoGov').style.display='none';        
+        document.querySelector(".favicon").src= url_atual+"/favicon.ico";
 
+        //esses dois são eu tentando fazer o botão funcionar. tenso. (problema)
+        var botao = document.querySelector(".botao");
+        botao.addEventListener("click", function () {
+            chrome.tabs.update(tabs[0].id, {url: url_atual});
+            }
+        )
+        
+        //isso é pra dar fetch na API. como eu odeio coisa assíncrona aaaaaaaaaaaaaaaaaaaa (problema)
+        var valor;
         var get = fetch("localhost:3000", 
             {body:url_atual,
             headers:{'Content-Type':'application/x-www-form-urlencodded'}, 
             method: 'GET'}
-        );
+        ).then((resposta) => {
+            if (resposta.ok){
+                valor = 200;
+            }
+            else valor = 500;
+        })
         
-        if(get){ 
-            document.querySelector('.cadastro').style.visibility='hidden';
+        if(!(get instanceof Promise)){ 
+            document.querySelector('.cadastro').style.display='none';
         }else{
-            document.querySelector('.pagina').style.visibility='hidden';
+            document.querySelector('.pagina').style.display='none';
         }
 
     }else{
-        document.querySelector('.siteGov').style.visibility='hidden';
-        document.querySelector('.siteGov').style.height='0px';
+        document.querySelector('.siteGov').style.display='none';        
     }
 
 
