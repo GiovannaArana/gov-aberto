@@ -7,6 +7,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
         document.querySelector(".html").innerHTML=url_atual;
         document.querySelector('.naoGov').style.display='none';        
         document.querySelector(".favicon").src= url_atual+"/favicon.ico";
+        document.querySelector(".camponome").style.display = 'none';
+        document.querySelector(".campourl").style.display = 'none';
 
         //esses dois são eu tentando fazer o botão funcionar. tenso. (problema)
         var botao = document.querySelector(".botao");
@@ -15,6 +17,13 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             }
         )
         
+        var botaoCad = document.querySelector(".botaoCad");
+        botaoCad.addEventListener("click", function () {
+            var nomeCidade = document.querySelector("#nomecidade").value;
+            var url = document.querySelector("#url").value;
+            }
+        )
+
         //isso é pra dar fetch na API. como eu odeio coisa assíncrona aaaaaaaaaaaaaaaaaaaa (problema)
         var valor;
         var get = fetch("localhost:3000", 
@@ -32,6 +41,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
             document.querySelector('.cadastro').style.display='none';
         }else{
             document.querySelector('.pagina').style.display='none';
+            document.querySelector(".camponome").style.display = 'flex';
+            document.querySelector(".campourl").style.display = 'flex';
         }
 
     }else{
