@@ -1,12 +1,12 @@
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
-  const domain = cleanUrlInput(tabs[0].url).replace(/\/.*/, '');
+  const domain = cleanUrlInput(tabs[0].url).replace(/\/.*/, "");
   // use `url` here inside the callback because it's asynchronous!
   const gov = domain.includes(".gov.br");
 
   if (gov) {
     document.querySelector(".html").innerHTML = domain;
     document.querySelector(".naoGov ").style.display = "none";
-    document.querySelector(".favicon").src = 'http://' + domain + "/favicon.ico";
+    document.querySelector(".favicon").src = "http://" + domain + "/favicon.ico";
     document.querySelector(".cadastro").style.display = "none";
 
     const response = await fetch("http://localhost:3000/url?" + new URLSearchParams({domain: cleanUrlInput(domain)}))
@@ -30,14 +30,14 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
 
         const response = await fetch("http://localhost:3000/url", {
           method: "POST",
-          headers: { 'content-type': 'application/x-www-form-urlencoded'},
+          headers: { "content-type": "application/x-www-form-urlencoded"},
           body: `city=${city}&url=${cleanUrlInput(url)}&domain=${domain}`
         })
 
         if (response.ok) {
-          alert('Cadastro realizado com sucesso! Obrigado por contribuir com o nosso catálogo')
+          alert("Cadastro realizado com sucesso! Obrigado por contribuir com o nosso catálogo")
         } else {
-          alert('Algo inesperado ocorreu ):')
+          alert("Algo inesperado ocorreu ):")
         }
       });
     }
@@ -47,5 +47,5 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
 });
 
 const cleanUrlInput = (url) => {
-    return url.replace(/^https?:\/\//, '');
+    return url.replace(/^https?:\/\//, "");
 }
